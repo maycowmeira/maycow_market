@@ -15,14 +15,14 @@ defmodule MaycowMarket.ProductTest do
       product = %Product{}
       assert product.code == ""
       assert product.name == ""
-      assert product.price == 0.0
+      assert product.price == Decimal.new("0.0")
     end
 
     test "successfully creates a product struct with specified values" do
-      product = %Product{code: "GR1", name: "Green tea", price: 3.11}
+      product = %Product{code: "GR1", name: "Green tea", price: Decimal.new("3.11")}
       assert product.code == "GR1"
       assert product.name == "Green tea"
-      assert product.price == 3.11
+      assert product.price == Decimal.new("3.11")
     end
   end
 end

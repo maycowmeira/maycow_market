@@ -1,3 +1,4 @@
+
 # MaycowMarket
 
 This project implements a simple checkout system for a supermarket, written in Elixir. The system scans products, applies special pricing rules, and calculates the total price of the basket.
@@ -34,6 +35,59 @@ This project implements a simple checkout system for a supermarket, written in E
 Run tests using:
 ```bash
 mix test
+```
+
+## Usage
+
+To use the MaycowMarket system in the terminal, follow these steps:
+
+1. Start an interactive Elixir session:
+    ```bash
+    iex -S mix
+    ```
+
+2. Create a new checkout process:
+    ```elixir
+    checkout = %MaycowMarket.Checkout{}
+    ```
+
+3. Scan products by their codes:
+    ```elixir
+    {:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "GR1")
+    {:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "SR1")
+    {:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "CF1")
+    ```
+
+4. View the current state of the checkout:
+    ```elixir
+    IO.inspect(checkout)
+    ```
+
+5. Calculate the total price of the basket:
+    ```elixir
+    checkout.total
+    ```
+
+## Example Usage
+
+Here is a full example of how to use the MaycowMarket system:
+
+```elixir
+# Start a new checkout
+checkout = %MaycowMarket.Checkout{}
+
+# Scan products
+{:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "GR1")
+{:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "SR1")
+{:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "CF1")
+{:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "SR1")
+{:ok, checkout} = MaycowMarket.Checkout.scan(checkout, "SR1")
+
+# View the current state of the checkout
+IO.inspect(checkout)
+
+# Calculate the total price
+checkout.total
 ```
 
 ## License
