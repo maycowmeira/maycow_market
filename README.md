@@ -30,12 +30,24 @@ This project implements a simple checkout system for a supermarket, written in E
     mix deps.get
     ```
 
+## Generating the docs
+
+Generates the docs using:
+```bash
+mix docs -f html --open
+```
+This command will generate the HTML pages with the documentation and open it in your default browser.
+
 ## Running Tests
 
-Run tests using:
+Run tests while generating the coverage report and using:
 ```bash
-mix test
+mix test --cover
 ```
+You can check the generated HTML pages in `cover` folder that is created after running this.
+
+Right now this project uses the ExUnit default cover dep. Which consider `defstruct` lines as not covered.
+For that reason the coverage is not 100%.
 
 ## Usage
 
