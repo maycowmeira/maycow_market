@@ -2,6 +2,8 @@ defmodule MaycowMarket.ProductCartTest do
   use ExUnit.Case
   alias MaycowMarket.{Product, ProductCart}
 
+  doctest ProductCart
+
   describe "new/1" do
     test "creates a new ProductCart" do
       product = %Product{code: "GR1", name: "Green tea", price: Decimal.new("3.11")}

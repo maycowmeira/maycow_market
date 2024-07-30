@@ -53,6 +53,7 @@ defmodule MaycowMarket.Checkout do
         total: Decimal.new("3.11")
       }}
 
+      iex> checkout = %MaycowMarket.Checkout{}
       iex> MaycowMarket.Checkout.scan(checkout, "UNKNOWN")
       :error
   """

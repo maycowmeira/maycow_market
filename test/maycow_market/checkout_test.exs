@@ -2,6 +2,8 @@ defmodule MaycowMarket.CheckoutTest do
   use ExUnit.Case
   alias MaycowMarket.Checkout
 
+  doctest Checkout
+
   describe "scan/2" do
     setup do
       initial_market = %Checkout{}

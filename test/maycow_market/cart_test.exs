@@ -1,6 +1,8 @@
 defmodule MaycowMarket.CartTest do
   use ExUnit.Case
+
   alias MaycowMarket.{Cart, Product}
+  doctest Cart
 
   describe "add_product/2" do
     test "adds a new product to the cart" do
