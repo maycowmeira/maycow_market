@@ -1,5 +1,7 @@
 defmodule MaycowMarket.Promotions.TakeThreePayTwo do
   @moduledoc """
+  The `MaycowMarket.Promotions.BulkDiscountFixedPrice` module implements the `MaycowMarket.Promotion` behavior.
+
   The `MaycowMarket.Promotions.TakeThreePayTwo` module applies a promotion where,
   if you buy three or more of a specific product, you only pay for two-thirds of the total amount.
 
@@ -11,6 +13,8 @@ defmodule MaycowMarket.Promotions.TakeThreePayTwo do
   alias MaycowMarket.{Product, ProductCart}
 
   @doc """
+  Implements the `apply/1` callback from the `MaycowMarket.Promotion` behavior.
+
   Applies the "Take Three, Pay Two" promotion to the cart.
 
   For each product in the cart with code "CF1" and an amount of 3 or more,
@@ -30,6 +34,7 @@ defmodule MaycowMarket.Promotions.TakeThreePayTwo do
       iex> MaycowMarket.Promotions.TakeThreePayTwo.apply(cart)
       [%ProductCart{product: %Product{code: "CF1", name: "Coffee", price: Decimal.new("11.23")}, amount: 3, total: Decimal.new("22.46")}]
   """
+  @impl true
   @spec apply([ProductCart.t()]) :: [ProductCart.t()]
   def apply(cart), do: Enum.map(cart, &apply_promo/1)
 

@@ -1,15 +1,16 @@
-defprotocol MaycowMarket.Promotion do
+defmodule MaycowMarket.Promotion do
   @moduledoc """
-  The `MaycowMarket.Promotion` protocol defines a common interface for applying promotions to a shopping cart.
+  The `MaycowMarket.Promotion` module defines a common behavior for applying promotions to a shopping cart.
 
-  This protocol should be implemented by any module that handles specific promotion rules.
-  Implementations of this protocol will provide the logic to modify the cart based on the promotion's conditions.
+  This behavior should be implemented by any module that handles specific promotion rules.
+  Implementations of this behavior will provide the logic to modify the cart based on the promotion's conditions.
 
   ## Example Implementation
 
       defmodule MaycowMarket.Promotions.BuyOneGetOneFree do
         @behaviour MaycowMarket.Promotion
 
+        @impl true
         def apply(cart) do
           # Implementation logic for buy-one-get-one-free promotion
         end
@@ -27,6 +28,6 @@ defprotocol MaycowMarket.Promotion do
 
     - The updated cart with the promotion applied, represented as a list of `ProductCart` structs.
   """
-  @spec apply([ProductCart.t()]) :: [ProductCart.t()]
-  def apply(cart)
+
+  @callback apply([ProductCart.t()]) :: [ProductCart.t()]
 end

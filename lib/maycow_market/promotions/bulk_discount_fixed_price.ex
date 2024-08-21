@@ -1,9 +1,9 @@
 defmodule MaycowMarket.Promotions.BulkDiscountFixedPrice do
   @moduledoc """
-  The `MaycowMarket.Promotions.BulkDiscountFixedPrice` module applies a promotion where,
-  if you buy three or more of a specific product, the price is fixed to a discounted rate per item.
+  The `MaycowMarket.Promotions.BulkDiscountFixedPrice` module implements the `MaycowMarket.Promotion` behavior.
 
-  This promotion currently applies to the product with code "SR1" (Strawberries).
+  This module applies a promotion where, if you buy three or more of a specific product, the price is fixed to a discounted rate per item.
+  Currently, this promotion applies to the product with code "SR1" (Strawberries).
   """
   @behaviour MaycowMarket.Promotion
 
@@ -11,6 +11,8 @@ defmodule MaycowMarket.Promotions.BulkDiscountFixedPrice do
   @fixed_discount_sr1_price Decimal.new("4.50")
 
   @doc """
+  Implements the `apply/1` callback from the `MaycowMarket.Promotion` behavior.
+
   Applies the bulk discount fixed price promotion to the cart.
 
   For each product in the cart with code "SR1" and an amount of 3 or more,
@@ -30,6 +32,7 @@ defmodule MaycowMarket.Promotions.BulkDiscountFixedPrice do
       iex> MaycowMarket.Promotions.BulkDiscountFixedPrice.apply(cart)
       [%ProductCart{product: %Product{code: "SR1", name: "Strawberries", price: Decimal.new("5.00")}, amount: 3, total: Decimal.new("13.50")}]
   """
+  @impl true
   @spec apply([ProductCart.t()]) :: [ProductCart.t()]
   def apply(cart), do: Enum.map(cart, &apply_promo/1)
 
