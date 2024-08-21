@@ -1,5 +1,7 @@
 defmodule MaycowMarket.Promotions.BuyOneGetOneFree do
   @moduledoc """
+  The `MaycowMarket.Promotions.BulkDiscountFixedPrice` module implements the `MaycowMarket.Promotion` behavior.
+
   The `MaycowMarket.Promotions.BuyOneGetOneFree` module applies a promotion where,
   if you buy one, you get one free for specific products.
 
@@ -10,6 +12,8 @@ defmodule MaycowMarket.Promotions.BuyOneGetOneFree do
   alias MaycowMarket.{Product, ProductCart}
 
   @doc """
+  Implements the `apply/1` callback from the `MaycowMarket.Promotion` behavior.
+
   Applies the "Buy One, Get One Free" promotion to the cart.
 
   For each product in the cart with code "GR1", the total price is adjusted to reflect the promotion.
@@ -28,6 +32,7 @@ defmodule MaycowMarket.Promotions.BuyOneGetOneFree do
       iex> MaycowMarket.Promotions.BuyOneGetOneFree.apply(cart)
       [%ProductCart{product: %Product{code: "GR1", name: "Green Tea", price: Decimal.new("3.11")}, amount: 2, total: Decimal.new("3.11")}]
   """
+  @impl true
   @spec apply([ProductCart.t()]) :: [ProductCart.t()]
   def apply(cart), do: Enum.map(cart, &apply_promo/1)
 
